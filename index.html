@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basic English - Lesson 9: Asking About Countries &amp; Nationalities</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap');
+
+    :root {
+      --header-bg: #134e4a;        /* Xanh cổ vịt đậm */
+      --accent-coral: #f2657a;     /* Hồng san hô */
+      --body-bg: #eaf5f3;         /* Nền nhạt bọt biển */
+      --card-bg: #ffffff;
+      --card-sub-bg: #edf6f5;     /* Nền ô chọn A B C D & chip */
+      --text-dark: #134e4a;
+      --text-gray: #527976;
+      --border-dashed: #a8d5e2;
+      --success-color: #10b981;
+      --error-color: #ef4444;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background-color: var(--body-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+      padding-bottom: 80px;
+    }
+
+    /* TOP HEADER DESKTOP */
+    .top-bar {
+      background-color: var(--header-bg);
+      color: #ffffff;
+      padding: 24px 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 5px solid var(--accent-coral);
+    }
+
+    .top-bar .brand {
+      font-weight: 900;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      line-height: 1.25;
+      text-transform: uppercase;
+    }
+
+    .top-bar .lesson-title {
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: 1.5px;
+      text-align: right;
+      text-transform: uppercase;
+    }
+
+    /* DESKTOP CONTAINER */
+    .container {
+      max-width: 1040px;
+      margin: 40px auto 0;
+      padding: 0 20px;
+    }
+
+    /* BANNER CARD DESKTOP */
+    .banner-card {
+      background-color: var(--header-bg);
+      color: #ffffff;
+      border-radius: 28px;
+      padding: 48px 56px;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 30px;
+      box-shadow: 0 12px 30px rgba(19, 78, 74, 0.15);
+    }
+
+    .banner-card .sub-tag {
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      opacity: 0.9;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .banner-card h1 {
+      font-size: 3.2rem;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+
+    .banner-card p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 680px;
+      margin-bottom: 28px;
+    }
+
+    .banner-card .meta-info {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .banner-card .meta-info span.dot {
+      color: var(--accent-coral);
+      font-weight: 900;
+    }
+
+    /* NAV BUTTONS DESKTOP */
+    .nav-tabs {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .nav-btn {
+      text-decoration: none;
+      background-color: #ffffff;
+      color: var(--text-dark);
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 12px 28px;
+      border-radius: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      transition: all 0.2s ease;
+    }
+
+    .nav-btn:hover {
+      background-color: var(--header-bg);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    /* SECTIONS */
+    .section {
+      background-color: #ffffff;
+      border-radius: 24px;
+      padding: 44px 48px;
+      margin-bottom: 36px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.025);
+    }
+
+    .section-header {
+      margin-bottom: 36px;
+    }
+
+    .section-header h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text-dark);
+    }
+
+    .section-header p {
+      color: var(--text-gray);
+      font-size: 1rem;
+      margin-top: 6px;
+    }
+
+    /* PHẦN I: TRẮC NGHIỆM DESKTOP GRID */
+    .mcq-item {
+      margin-bottom: 40px;
+      padding-bottom: 28px;
+      border-bottom: 1px dashed #e2f0ee;
+    }
+
+    .mcq-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 20px;
+    }
+
+    .question-row {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+
+    .badge-num {
+      background-color: var(--accent-coral);
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 1.05rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .question-text {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text-dark);
+    }
+
+    /* Grid 2 cột cho Desktop */
+    .options-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-left: 62px;
+    }
+
+    .opt-card {
+      background-color: var(--card-sub-bg);
+      border: 2px solid transparent;
+      border-radius: 18px;
+      padding: 16px 22px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--text-dark);
+      transition: all 0.2s ease;
+    }
+
+    .opt-card:hover {
+      background-color: #d1eee9;
+      transform: translateY(-1px);
+    }
+
+    /* Khi chọn: Đổi sang màu xanh cổ vịt nổi bật */
+    .opt-card.selected {
+      border-color: var(--header-bg);
+      background-color: var(--header-bg);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(19, 78, 74, 0.15);
+    }
+
+    .opt-card.selected .opt-key {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+    }
+
+    .opt-card.correct {
+      border-color: var(--success-color) !important;
+      background-color: #e6f4ea !important;
+      color: var(--success-color) !important;
+    }
+    .opt-card.correct .opt-key {
+      background-color: #ffffff;
+      color: var(--success-color);
+    }
+
+    .opt-card.incorrect {
+      border-color: var(--error-color) !important;
+      background-color: #fce8e6 !important;
+      color: var(--error-color) !important;
+    }
+    .opt-card.incorrect .opt-key {
+      background-color: #ffffff;
+      color: var(--error-color);
+    }
+
+    .opt-key {
+      background-color: #ffffff;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+      color: var(--text-dark);
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    /* PHẦN II: DRAG & DROP / SUBSTITUTION DESKTOP */
+    .sub-item {
+      margin-bottom: 42px;
+      padding-bottom: 30px;
+      border-bottom: 1px dashed #e2f0ee;
+    }
+
+    .sub-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 20px;
+    }
+
+    .word-pool {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 18px;
+      margin-left: 62px;
+    }
+
+    .word-chip {
+      background-color: var(--card-sub-bg);
+      border: none;
+      color: var(--text-dark);
+      font-weight: 800;
+      font-size: 1.05rem;
+      padding: 11px 24px;
+      border-radius: 24px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .word-chip:hover {
+      background-color: #dbece9;
+      transform: translateY(-1px);
+    }
+
+    .word-chip.selected-chip {
+      text-decoration: line-through;
+      opacity: 0.35;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .drop-box {
+      border: 2px dashed var(--border-dashed);
+      border-radius: 20px;
+      min-height: 110px;
+      margin-left: 62px;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+      background-color: #fafdfd;
+      cursor: pointer;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .drop-box .placeholder {
+      color: #89a8a4;
+      font-size: 1.05rem;
+      font-weight: 600;
+      user-select: none;
+    }
+
+    .drop-box .placed-word {
+      background-color: var(--header-bg);
+      color: #ffffff;
+      padding: 9px 20px;
+      border-radius: 18px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .drop-box.correct-box {
+      border-color: var(--success-color);
+      background-color: #f0fdf4;
+    }
+
+    .drop-box.incorrect-box {
+      border-color: var(--error-color);
+      background-color: #fef2f2;
+    }
+
+    .sub-translation {
+      margin-left: 62px;
+    }
+
+    .sub-translation .vi-main {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 10px;
+    }
+
+    .sub-translation .replace-group {
+      font-size: 1rem;
+      color: var(--text-dark);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .sub-translation .replace-group strong {
+      font-weight: 800;
+    }
+
+    .sub-translation .replace-item {
+      color: var(--text-dark);
+      font-weight: 700;
+    }
+
+    .sub-translation .replace-item span {
+      color: var(--text-gray);
+      font-weight: 500;
+    }
+
+    /* ACTION BUTTONS & SCORE TRÊN PHẦN II */
+    .action-bar {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-top: 40px;
+      padding-top: 25px;
+      border-top: 2px solid #e2f0ee;
+    }
+
+    .btn-submit {
+      background-color: var(--header-bg);
+      color: #ffffff;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 14px;
+      font-weight: 800;
+      font-size: 1.05rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: none; /* Mặc định ẩn, chỉ hiện khi đủ 30/30 câu */
+    }
+
+    .btn-submit:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+
+    .btn-reset {
+      background-color: #e2f0ee;
+      color: var(--text-dark);
+      border: none;
+      padding: 14px 28px;
+      border-radius: 14px;
+      font-weight: 800;
+      font-size: 1.05rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: none; /* Mặc định ẩn, chỉ hiện khi đủ 30/30 câu */
+    }
+
+    .btn-reset:hover {
+      background-color: #d2e8e5;
+    }
+
+    .progress-text {
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--text-dark);
+    }
+
+    .score-text {
+      font-weight: 800;
+      font-size: 1.1rem;
+      margin-left: auto;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--text-gray);
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-top: 50px;
+    }
+
+    @media (max-width: 768px) {
+      .top-bar { padding: 20px 24px; }
+      .banner-card { padding: 32px; }
+      .banner-card h1 { font-size: 2.2rem; }
+      .options-list { grid-template-columns: 1fr; }
+      .word-pool, .drop-box, .sub-translation { margin-left: 0; }
+      .question-row { gap: 12px; }
+      .action-bar { flex-direction: column; align-items: stretch; }
+      .score-text { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER Top Bar -->
+  <header class="top-bar">
+    <div class="brand">BASIC<br>ENGLISH</div>
+    <div class="lesson-title">LESSON 9 /<br>ASKING ABOUT COUNTRIES &amp; NATIONALITIES</div>
+  </header>
+
+  <main class="container">
+    <!-- BANNER CARD -->
+    <section class="banner-card">
+      <div class="sub-tag">EVERYDAY CONVERSATION</div>
+      <h1>Asking About<br>Countries &amp; Nationalities</h1>
+      <p>Cùng học cách hỏi và trả lời về quê quán, quốc tịch, nguồn gốc xuất thân và trải nghiệm sinh sống tại các quốc gia một cách tự nhiên.</p>
+      <div class="meta-info">
+        <span>15 câu mỗi phần</span>
+        <span class="dot">•</span>
+        <span>Phần I &amp; II (Tổng 30 câu)</span>
+        <span class="dot">•</span>
+        <span>English • Vietnamese</span>
+      </div>
+    </section>
+
+    <!-- NAV TABS -->
+    <div class="nav-tabs">
+      <a href="#part1" class="nav-btn">Phần I · Mẫu câu cơ bản</a>
+      <a href="#part2" class="nav-btn">Phần II · Bài tập thay thế</a>
+    </div>
+
+    <!-- PHẦN I -->
+    <section id="part1" class="section">
+      <div class="section-header">
+        <h2>Phần I · Mẫu câu cơ bản</h2>
+        <p>Chọn nghĩa tiếng Việt phù hợp nhất cho mỗi câu.</p>
+      </div>
+
+      <div class="mcq-container" id="mcq-list-container">
+        <!-- Render danh sách câu hỏi phần I -->
+      </div>
+    </section>
+
+    <!-- PHẦN II -->
+    <section id="part2" class="section">
+      <div class="section-header">
+        <h2>Phần II · Bài tập thay thế</h2>
+        <p>Sắp xếp các từ thành câu hoàn chỉnh bằng cách nhấp vào từ hoặc kéo từ vào khung.</p>
+      </div>
+
+      <div class="sub-container" id="sub-list-container">
+        <!-- Render danh sách câu hỏi phần II -->
+      </div>
+
+      <!-- THANH NỘP BÀI VÀ LÀM LẠI -->
+      <div class="action-bar">
+        <button id="check-all" class="btn-submit">Nộp bài</button>
+        <button id="reset-all" class="btn-reset">Làm lại</button>
+        <span id="progress-display" class="progress-text">Đã hoàn thành: 0/30 câu</span>
+        <span id="score-display" class="score-text"></span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Basic English · Lesson 9: Asking About Countries &amp; Nationalities</p>
+  </footer>
+
+  <script>
+    // DỮ LIỆU LESSON 9 - PHẦN I (Trắc nghiệm)
+    const mcqDataOriginal = [
+      { num: "01", en: "Where are you from?", correct: "A", opts: [{val:"A", text:"Quê anh ở đâu?"}, {val:"B", text:"Anh sống ở đâu?"}, {val:"C", text:"Anh đang đi đâu đấy?"}, {val:"D", text:"Anh tới đây từ khi nào?"}] },
+      { num: "02", en: "I'm from Pittsburgh.", correct: "B", opts: [{val:"A", text:"Tôi đang sống ở Pittsburgh."}, {val:"B", text:"Quê tôi ở Pittsburgh."}, {val:"C", text:"Tôi vừa đi Pittsburgh về."}, {val:"D", text:"Tôi sẽ chuyển đến Pittsburgh."}] },
+      { num: "03", en: "I'm Russian.", correct: "C", opts: [{val:"A", text:"Tôi biết tiếng Nga."}, {val:"B", text:"Tôi vừa đến Nga."}, {val:"C", text:"Tôi là người Nga."}, {val:"D", text:"Sếp tôi là người Nga."}] },
+      { num: "04", en: "Why are you in the U.S.?", correct: "A", opts: [{val:"A", text:"Vì sao chị đến Mỹ?"}, {val:"B", text:"Khi nào chị đi Mỹ?"}, {val:"C", text:"Chị ở Mỹ bao lâu rồi?"}, {val:"D", text:"Chị có thích nước Mỹ không?"}] },
+      { num: "05", en: "When did you get to this country?", correct: "D", opts: [{val:"A", text:"Anh sẽ tới nước này khi nào?"}, {val:"B", text:"Anh tới nước này bằng phương tiện gì?"}, {val:"C", text:"Anh đã ở nước này bao nhiêu năm?"}, {val:"D", text:"Chị đã đến nước này khi nào?"}] },
+      { num: "06", en: "You look Spanish.", correct: "A", opts: [{val:"A", text:"Trông chị giống người Tây Ban Nha."}, {val:"B", text:"Chị nói tiếng Tây Ban Nha rất giỏi."}, {val:"C", text:"Chị vừa đi Tây Ban Nha về đúng không?"}, {val:"D", text:"Chị có biết người Tây Ban Nha nào không?"}] },
+      { num: "07", en: "Were you born in America?", correct: "B", opts: [{val:"A", text:"Anh đang sống ở Mỹ phải không?"}, {val:"B", text:"Chị sinh ra ở Mỹ phải không?"}, {val:"C", text:"Anh có quốc tịch Mỹ phải không?"}, {val:"D", text:"Anh mới đến Mỹ phải không?"}] },
+      { num: "08", en: "My parents came to this country before I was born.", correct: "C", opts: [{val:"A", text:"Ba mẹ tôi sinh ra ở đất nước này."}, {val:"B", text:"Tôi chuyển đến đất nước này cùng với ba mẹ."}, {val:"C", text:"Ba mẹ tôi đến đất nước này trước khi tôi được sinh ra."}, {val:"D", text:"Ba mẹ tôi rất thích đất nước này."}] },
+      { num: "09", en: "What nationality are you?", correct: "A", opts: [{val:"A", text:"Chị quốc tịch gì?"}, {val:"B", text:"Chị sống ở nước nào?"}, {val:"C", text:"Chị nói ngôn ngữ gì?"}, {val:"D", text:"Chị sinh ra ở đâu?"}] },
+      { num: "10", en: "Are you a citizen or a resident of this country?", correct: "B", opts: [{val:"A", text:"Anh đã đi du lịch những nước nào rồi?"}, {val:"B", text:"Chị là công dân hay cư dân ở nước này?"}, {val:"C", text:"Chị đã đăng ký tạm trú ở nước này chưa?"}, {val:"D", text:"Anh có muốn trở thành công dân nước này không?"}] },
+      { num: "11", en: "How long have you been here?", correct: "D", opts: [{val:"A", text:"Khi nào chị đến đây?"}, {val:"B", text:"Bao lâu nữa chị mới rời đi?"}, {val:"C", text:"Chị đi đến đây bằng gì?"}, {val:"D", text:"Chị đã ở đây bao lâu rồi?"}] },
+      { num: "12", en: "I just came back from Korea.", correct: "A", opts: [{val:"A", text:"Tôi vừa từ Hàn Quốc trở về."}, {val:"B", text:"Tôi chuẩn bị đi Hàn Quốc."}, {val:"C", text:"Tôi từng sống ở Hàn Quốc rất lâu."}, {val:"D", text:"Bạn tôi vừa từ Hàn Quốc sang."}] },
+      { num: "13", en: "My ancestors came here from Ireland.", correct: "C", opts: [{val:"A", text:"Gia đình tôi vừa đi du lịch Ireland về."}, {val:"B", text:"Bạn bè tôi hầu hết đến từ Ireland."}, {val:"C", text:"Tổ tiên của tôi từ Ailen đến đây."}, {val:"D", text:"Tôi có nhiều người quen ở Ireland."}] },
+      { num: "14", en: "My girlfriend is from Mexico.", correct: "B", opts: [{val:"A", text:"Bạn gái tôi đang đi du lịch ở Mê-hi-cô."}, {val:"B", text:"Bạn gái tôi quê ở Mê-hi-cô."}, {val:"C", text:"Tôi gặp bạn gái ở Mê-hi-cô."}, {val:"D", text:"Bạn gái tôi rất thích đồ ăn Mê-hi-cô."}] },
+      { num: "15", en: "I was born in England.", correct: "A", opts: [{val:"A", text:"Tôi sinh ra ở Anh."}, {val:"B", text:"Tôi đang học tập tại Anh."}, {val:"C", text:"Bố mẹ tôi là người Anh."}, {val:"D", text:"Tôi vừa trở về từ Anh."}] }
+    ];
+
+    // DỮ LIỆU LESSON 9 - PHẦN II (Bài tập thay thế)
+    const subDataOriginal = [
+      { num: "01", target: "Do you speak Chinese?", words: ["Chinese?", "Do", "speak", "you"], vi: "Bạn nói được tiếng Hoa chứ?", replaces: "English? (tiếng Anh)" },
+      { num: "02", target: "Not a bit.", words: ["bit.", "Not", "a"], vi: "Không nói được chút nào cả.", replaces: "in the least. (chút nào cả.) · at all. (chút nào cả.) · in the slightest. (chút nào cả.)" },
+      { num: "03", target: "How stupid of me.", words: ["stupid", "me.", "How", "of"], vi: "Tôi thật ngớ ngẩn.", replaces: "dumb (ngố.) · insensitive (không nhạy bén.) · foolish (ngu ngốc.)" },
+      { num: "04", target: "Is this seat taken?", words: ["taken?", "seat", "Is", "this"], vi: "Chỗ này có ai ngồi không?", replaces: "occupied? (chiếm) · reserved? (đặt trước) · being used? (đang dùng)" },
+      { num: "05", target: "Let me move my shirt.", words: ["my", "Let", "shirt.", "move", "me"], vi: "Để tôi để cái áo sơ mi ra chỗ khác nhé.", replaces: "coat. (cái áo khoác) · pants. (cái quần tây) · hat. (cái nón/mũ)" },
+      { num: "06", target: "Are you here on vacation?", words: ["on", "vacation?", "here", "Are", "you"], vi: "Bạn đang đi nghỉ ở đây phải không?", replaces: "business? (công tác) · holiday? (nghỉ) · tour? (du lịch)" },
+      { num: "07", target: "I didn't mean to pry.", words: ["mean", "didn't", "pry.", "I", "to"], vi: "Tôi không có ý soi mói.", replaces: "intrude. (xen vào chuyện riêng tư.) · be nosy. (tò mò.) · interfere. (xen vào.)" },
+      { num: "08", target: "I guess you must really appreciate this place.", words: ["this", "place.", "really", "appreciate", "you", "I", "guess", "must"], vi: "Tôi đoán hẳn là anh rất thích nơi này.", replaces: "enjoy (rất thích) · like (thích) · value (đánh giá cao)" },
+      { num: "09", target: "Why didn't you say something earlier?", words: ["earlier?", "something", "didn't", "you", "Why", "say"], vi: "Sao anh không nói điều đó sớm hơn?", replaces: "speak up (lên tiếng) · mention this (đề cập điều này) · say so (nói vậy)" },
+      { num: "10", target: "Are you finished with that newspaper?", words: ["newspaper?", "with", "finished", "you", "that", "Are"], vi: "Chị đã đọc xong tờ báo đó phải không?", replaces: "done with (đã đọc xong) · still using (vẫn còn đang đọc) · reading (đang đọc)" },
+      { num: "11", target: "You Americans often get those confused.", words: ["Americans", "often", "get", "those", "You", "confused."], vi: "Người Mỹ các bạn thường hay nhầm lẫn hai miền này.", replaces: "mixed up. (nhầm lẫn) · switched. (lẫn lộn) · backwards. (lẫn lộn)" },
+      { num: "12", target: "I like the outdoors.", words: ["outdoors.", "the", "like", "I"], vi: "Tôi thích cảnh ngoài trời.", replaces: "countryside. (miền quê.) · wilderness. (cảnh hoang vu.) · outside. (cảnh ngoài trời.)" },
+      { num: "13", target: "How do you like working here so far?", words: ["working", "like", "far?", "here", "How", "so", "you", "do"], vi: "Cho đến giờ thì chị thấy làm việc ở đây thế nào?", replaces: "up to now? (Cho đến nay) · at the moment? (Hiện giờ) · thus far? (Cho đến giờ)" },
+      { num: "14", target: "I didn't mean to offend you.", words: ["offend", "to", "didn't", "mean", "I", "you."], vi: "Tôi không có ý xúc phạm chị.", replaces: "annoy (gây khó chịu cho) · hurt (làm tổn thương) · bother (làm phiền)" },
+      { num: "15", target: "She wanted to have you come over for dinner.", words: ["wanted", "over", "come", "for", "She", "you", "dinner.", "to", "have"], vi: "Cô ấy muốn mời chị đến nhà dùng bữa tối.", replaces: "stop by (ghé qua) · join us (cùng chúng tôi) · sit down (ngồi lại)" }
+    ];
+
+    function shuffleArray(array) {
+      let arr = [...array];
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function renderLesson() {
+      const mcqContainer = document.getElementById("mcq-list-container");
+      const subContainer = document.getElementById("sub-list-container");
+      
+      mcqContainer.innerHTML = "";
+      subContainer.innerHTML = "";
+
+      const shuffledMcq = shuffleArray(mcqDataOriginal).map((item, index) => {
+        return {
+          ...item,
+          displayNum: (index + 1 < 10 ? "0" : "") + (index + 1),
+          opts: shuffleArray(item.opts)
+        };
+      });
+
+      const shuffledSub = shuffleArray(subDataOriginal).map((item, index) => {
+        return {
+          ...item,
+          displayNum: (index + 1 < 10 ? "0" : "") + (index + 1),
+          words: shuffleArray(item.words)
+        };
+      });
+
+      shuffledMcq.forEach(q => {
+        let cardHTML = `
+          <div class="mcq-item" data-correct="${q.correct}">
+            <div class="question-row">
+              <div class="badge-num">${q.displayNum}</div>
+              <div class="question-text">${q.en}</div>
+            </div>
+            <div class="options-list">
+        `;
+        q.opts.forEach(opt => {
+          cardHTML += `
+            <div class="opt-card" data-val="${opt.val}">
+              <div class="opt-key">${opt.val}</div> ${opt.text}
+            </div>
+          `;
+        });
+        cardHTML += `</div></div>`;
+        mcqContainer.innerHTML += cardHTML;
+      });
+
+      shuffledSub.forEach(s => {
+        let chipsHTML = "";
+        s.words.forEach(w => {
+          chipsHTML += `<button class="word-chip">${w}</button>`;
+        });
+
+        let subHTML = `
+          <div class="sub-item" data-target="${s.target}">
+            <div class="question-row">
+              <div class="badge-num">${s.displayNum}</div>
+            </div>
+            <div class="word-pool">${chipsHTML}</div>
+            <div class="drop-box">
+              <span class="placeholder">Nhấp vào từ phía trên hoặc kéo từ vào đây</span>
+            </div>
+            <div class="sub-translation">
+              <div class="vi-main">${s.vi}</div>
+              <div class="replace-group">
+                <strong>Từ thay thế:</strong>
+                <div class="replace-item">${s.replaces}</div>
+              </div>
+            </div>
+          </div>
+        `;
+        subContainer.innerHTML += subHTML;
+      });
+
+      initInteractions();
+    }
+
+    function initInteractions() {
+      const mcqItems = document.querySelectorAll(".mcq-item");
+      mcqItems.forEach(item => {
+        const opts = item.querySelectorAll(".opt-card");
+        opts.forEach(opt => {
+          opt.addEventListener("click", () => {
+            opts.forEach(o => o.classList.remove("selected"));
+            opt.classList.add("selected");
+            updateProgress();
+          });
+        });
+      });
+
+      const subItems = document.querySelectorAll(".sub-item");
+      subItems.forEach(item => {
+        const chips = item.querySelectorAll(".word-chip");
+        const dropBox = item.querySelector(".drop-box");
+        const placeholder = dropBox.querySelector(".placeholder");
+
+        chips.forEach(chip => {
+          chip.setAttribute("draggable", "true");
+
+          chip.addEventListener("click", () => {
+            if (chip.classList.contains("selected-chip")) return;
+            addWordToBox(dropBox, chip, placeholder);
+            updateProgress();
+          });
+
+          chip.addEventListener("dragstart", (e) => {
+            e.dataTransfer.setData("text/plain", chip.textContent.trim());
+          });
+        });
+
+        dropBox.addEventListener("dragover", (e) => e.preventDefault());
+
+        dropBox.addEventListener("drop", (e) => {
+          e.preventDefault();
+          const text = e.dataTransfer.getData("text/plain");
+          const targetChip = Array.from(chips).find(c => c.textContent.trim() === text && !c.classList.contains("selected-chip"));
+          if (targetChip) {
+            addWordToBox(dropBox, targetChip, placeholder);
+            updateProgress();
+          }
+        });
+
+        dropBox.addEventListener("click", (e) => {
+          if (e.target.classList.contains("placed-word")) {
+            const wordText = e.target.textContent.trim();
+            e.target.remove();
+
+            const targetChip = Array.from(chips).find(c => c.textContent.trim() === wordText && c.classList.contains("selected-chip"));
+            if (targetChip) {
+              targetChip.classList.remove("selected-chip");
+            }
+
+            if (dropBox.querySelectorAll(".placed-word").length === 0) {
+              placeholder.style.display = "block";
+            }
+            updateProgress();
+          }
+        });
+      });
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const mcqItems = document.querySelectorAll(".mcq-item");
+      const subItems = document.querySelectorAll(".sub-item");
+
+      let completedMcq = 0;
+      mcqItems.forEach(item => {
+        if (item.querySelector(".opt-card.selected")) completedMcq++;
+      });
+
+      let completedSub = 0;
+      subItems.forEach(item => {
+        const dropBox = item.querySelector(".drop-box");
+        if (dropBox.querySelectorAll(".placed-word").length > 0) completedSub++;
+      });
+
+      const totalDone = completedMcq + completedSub;
+      document.getElementById("progress-display").textContent = `Đã hoàn thành: ${totalDone}/30 câu`;
+
+      const checkAllBtn = document.getElementById("check-all");
+      const resetAllBtn = document.getElementById("reset-all");
+
+      if (totalDone === 30) {
+        checkAllBtn.style.display = "inline-block";
+        resetAllBtn.style.display = "inline-block";
+      } else {
+        checkAllBtn.style.display = "none";
+        resetAllBtn.style.display = "none";
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      renderLesson();
+
+      const checkAllBtn = document.getElementById("check-all");
+      const resetAllBtn = document.getElementById("reset-all");
+      const scoreDisplay = document.getElementById("score-display");
+
+      checkAllBtn.addEventListener("click", () => {
+        const mcqItems = document.querySelectorAll(".mcq-item");
+        const subItems = document.querySelectorAll(".sub-item");
+
+        let scoreP1 = 0;
+        mcqItems.forEach(item => {
+          const correctVal = item.getAttribute("data-correct");
+          const selectedOpt = item.querySelector(".opt-card.selected");
+          const opts = item.querySelectorAll(".opt-card");
+
+          opts.forEach(o => {
+            o.classList.remove("correct", "incorrect");
+            if (o.getAttribute("data-val") === correctVal) {
+              o.classList.add("correct");
+            }
+          });
+
+          if (selectedOpt) {
+            if (selectedOpt.getAttribute("data-val") === correctVal) {
+              scoreP1++;
+            } else {
+              selectedOpt.classList.add("incorrect");
+            }
+          }
+        });
+
+        let scoreP2 = 0;
+        subItems.forEach(item => {
+          const targetSentence = item.getAttribute("data-target").trim();
+          const dropBox = item.querySelector(".drop-box");
+          const placedWords = Array.from(dropBox.querySelectorAll(".placed-word")).map(w => w.textContent.trim()).join(" ");
+
+          dropBox.classList.remove("correct-box", "incorrect-box");
+
+          if (placedWords === targetSentence) {
+            scoreP2++;
+            dropBox.classList.add("correct-box");
+          } else {
+            dropBox.classList.add("incorrect-box");
+          }
+        });
+
+        const totalScore = scoreP1 + scoreP2;
+        scoreDisplay.textContent = `Tổng kết: ${totalScore}/30 câu đúng (P.I: ${scoreP1}/15, P.II: ${scoreP2}/15)`;
+        scoreDisplay.style.color = totalScore === 30 ? "#10b981" : "#134e4a";
+      });
+
+      resetAllBtn.addEventListener("click", () => {
+        scoreDisplay.textContent = "";
+        renderLesson(); 
+      });
+    });
+
+    function addWordToBox(box, chip, placeholder) {
+      placeholder.style.display = "none";
+      const wordBadge = document.createElement("span");
+      wordBadge.className = "placed-word";
+      wordBadge.textContent = chip.textContent.trim();
+      box.appendChild(wordBadge);
+
+      chip.classList.add("selected-chip");
+    }
+  </script>
+</body>
+</html>
